@@ -1,34 +1,11 @@
-# Vaga Data Scientist - Prova Técnica
+**Abordagem**: modelagem de classificação multiclasse utilizando variáveis dummies criadas a partir do texto original, seguindo as seguintes etapas:
+- verificação de nulos
+- tratamento de acentuação, pontuação e stopwords
+- aplicação do método TF-IDF
 
-## Problema proposto
-
-**Formato**: Problema Online + Entrevista subsequente
-
-**Prazo**: 7 dias
-
-**Descrição**: O problema consiste em prever a nota de avaliação dos clientes de um website de ecommerce, com base nos dados de avaliações (train_df.csv).
-
-**Entregáveis**: link para repositório no Github com ao menos os seguintes arquivos:
-- README.md
-- notebook da solução (`resolução_prova_tecnica.ipynb`)
-- source-code (`./src`)
-- requirements.txt
-
-**Dados**: train_df.csv
-- Tabela de dados de empresa de ecommerce com mais de 130 mil avaliações de clientes. A base oferece informações sobre o perfil do revisor, como sexo, idade e localização geográfica.
-    - y label column: overall_rating
-
-## Próximos passos:
-
-**Avaliação do Notebook**: Serão utilizados os seguintes critérios para avaliação da solução:
-- estruturação do experimento
-- exploração e análise dos dados e seus impactos nas abordagens utilizadas
-- solução utilizada
-- resultado obtido
-- organização do código
-
-**Entrevista**: Após o envio da solução do problema proposto, iremos agendar uma entrevista para discutir a solução adotada, onde iremos fazer perguntas mais aprofundadas sobre um ou mais dos tópicos abaixo:
-- machine learning
-- programação
-- design de sistema
-- business / aplicação ao negócio
+**Otimização do algoritmo**: Os algoritmos testados foram Naive Bayes (NB, usual em problemas de textos) e Random Forest (RF, ajuste paralelizável e mais rápido). Há três versões de modelos ao final (uma primeira usando apenas o texto, a segunda acrescentando algumas variáveis do reviewer e a terceira após balanceamento de classes). Todas seguem as etapas:
+- separação entre treino e teste
+- manipulações na base de treino (fit transform) e apenas aplicação na base de teste (transform)
+- otimização de hiperparâmetros da RF utilizando grid search com validação cruzada apenas na base de treino
+- ajuste final da RF e do NB na base de treino
+- cálculo da acurácia global e visualização da matriz de confusão 5x5 para ambos os algoritmos
